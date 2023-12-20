@@ -1,0 +1,2 @@
+docker run -e WELCOME_MESSAGE="Hello from Docker" -p 8282:80 myimage
+=====================================================================
