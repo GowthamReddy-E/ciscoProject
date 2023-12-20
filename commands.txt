@@ -1,2 +1,2 @@
-docker run -e WELCOME_MESSAGE="Hello from Docker" -p 8282:80 myimage
-=====================================================================
+docker run -e WELCOME_MESSAGE="Variable value or ENV value" -p 8282:80 custom_image_Name
+========================================================================================
