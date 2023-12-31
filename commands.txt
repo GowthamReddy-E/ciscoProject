@@ -1,2 +1,41 @@
 docker run -e WELCOME_MESSAGE="Variable value or ENV value" -p 8282:80 custom_image_Name
 ========================================================================================
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' c1
+
+curl.exe -sO http://192.168.17.215:8080/jnlpJars/agent.jar
+java -jar agent.jar -jnlpUrl http://192.168.17.215:8080/computer/agentOne/jenkins-agent.jnlp -secret c33c9d9d76d306b93b06cbccf4465d0b23265d4556eea67bb1b1fa0d13a43f07 -workDir "/home/jenkins"
+
+sudo vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+===================
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+#BOOTPROTO="dhcp"
+BOOTPROTO="none"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="ens33"
+UUID="62ec1996-59c7-4f86-b157-6c979d72dba6"
+DEVICE="ens33"
+ONBOOT="yes"
+IPV6_PRIVACY="no"
+=========================
+
+
+TYPE=Ethernet
+BOOTPROTO=none
+NAME="ens33"
+DEVICE="ens33"
+ONBOOT=yes
+IPADDR=192.168.17.218
+NETMASK=255.255.255.0
+GATEWAY=192.168.17.1
+DNS1=8.8.8.8
+

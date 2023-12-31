@@ -1,0 +1,30 @@
+pipeline {
+    agent {label 'two'}
+
+    environment {
+        REMOTE_SERVER = 'root@192.168.17.224'
+        MAVEN_HOME = '/opt/apache-maven-3.9.6'
+        PATH = "${MAVEN_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('CheckOut and Build') {
+            steps {
+                script {
+                    git credentialsId: 'GITHUB', url: 'https://github.com/GowthamReddy-E/helloWorldJava.git'
+                    sh "mvn clean install"
+                }
+            }
+        }
+
+        stage('Move to agentone server') {
+            steps {
+                script {
+                    sshagent(credentials: ['agentone'], ignoreMissing: true) {
+                        sh 'scp -o StrictHostKeyChecking=no ./target/helloWorldJava-0.0.1-SNAPSHOT.jar root@192.168.17.224:/home/'
+                    }
+                }
+            }
+        }
+    }
+}
